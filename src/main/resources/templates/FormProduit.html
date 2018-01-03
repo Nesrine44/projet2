@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+<head>
+
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 290px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 250px;
+    display: block;
+
+    
+    
+    
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container" layout:fragment="content">
+<div class="panel panel-default">
+
+<div class="panel-heading">Ajouter un client</div>
+<div class="panel-body ">
+
+  
+<nav>
+ <div class="btn-group">
+  
+  
+  <a th:href="@{/client}"><button type="button" class="btn btn-danger">Gestion des Clients</button></a>
+  <a th:href="@{/site}"><button type="button" class="btn btn-danger">Gestion des Sites</button></a>
+<a th:href="@{/service}"><button type="button" class="btn btn-danger">Gestion des Services</button></a>
+
+			
+</div>
+</nav>
+<article>
+
+	
+						
+				
+<form class="form-horizontal" th:action="@{saveproduit}" method="post">
+	
+<!--    <div class="form-group row"> -->
+<!--     <label class="control-label col-sm-3" for="prenom">List Nom client: </label> -->
+<!-- <div class="col-sm-8" > -->
+
+<!--     <select class="form-control" id="produitOrder" name="produitOrder" th:object="${produit}" > -->
+<!--         <option value="" >List client</option> -->
+<!--     <option th:each="p:${listProduits}" th:text="${p.nomclient}"></option> -->
+<!--     </select> -->
+<!-- </div> -->
+<!--   </div> -->
+		
+ 	
+<div class="form-group row" >
+  <label class="control-label col-sm-3" for="nomsociete">Nom societe : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="societe" placeholder="Enter nom societe"  name="nomsociete" th:txt="${produit.nomsociete}"/>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="prenom">Nom client: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="nom" placeholder="Enter nom client" name="nomclient" th:txt="${produit.nomclient}"/>
+    </div>
+ </div>
+ 
+ 
+
+
+ 
+
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="prenom">Prenom: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="prenom" placeholder="Enter prenom client" name="prenomclient" th:txt="${produit.prenomclient}"/>
+    </div>
+ </div>
+ 
+  <div class="form-group row">
+  <label class="control-label col-sm-3" for="telprof">Tel Professionnel   <span class="glyphicon glyphicon-phone"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="telprof" placeholder="Enter number" name="telprofessionnel" th:txt="${produit.telprofessionnel}"/>
+    </div>
+ </div>
+ 
+
+  <div class="form-group row">
+  <label class="control-label col-sm-3" for="telprso">Tel Personnel   <span class="glyphicon glyphicon-earphone"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="telperso" placeholder="Enter number" name="telpersonnel" th:txt="${produit.telpersonnel}"/>
+    </div>
+ </div>
+
+
+
+
+
+  
+
+  
+  <div class="form-group row" >
+  <label class="control-label col-sm-3" for="email">Email   <span class="glyphicon glyphicon-envelope"></span> : </label>
+    <div class="col-sm-8">
+      <input type="email" class="form-control" id="email" placeholder="Enter email"  name="email" th:txt="${produit.email}"/>
+    </div>
+ </div>
+ 
+   <div class="form-group row">
+  <label class="control-label col-sm-3" for="adresse">Adresse   <span class="glyphicon glyphicon-home"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="adresse" placeholder="Enter address"   name="adresse" th:txt="${produit.adresse}"/>
+    </div>
+ </div>
+  
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="telprso">Ville: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="ville" placeholder="Enter ville"  name="ville" th:txt="${produit.ville}"/>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row" th:if="${produit}">
+  <label class="control-label col-sm-3" for="telprso">Nombre site : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="nbrsite" placeholder="Enter number" name="nombresite"  th:txt="${produit.nombresite}"/>
+    </div>
+ </div>
+
+
+
+<div class="form-group row">
+  <label class="control-label col-sm-3" for="av">CGC : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="cgc" placeholder="Enter nom" name="cgc" th:txt="${produit.cgc}"/>
+    </div>         
+ </div>
+ 
+ 
+ 
+<div class="form-group row" >
+  <label class="control-label col-sm-3" for="av">Avant vente : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="av" placeholder="Enter nom" name="av" th:txt="${produit.av}"/>
+    </div>         
+ </div>
+ 
+ 
+
+
+ 
+ 
+          <div class="nav navbar-nav navbar-right">
+           <button onclick="return confirm ('vous etes sure de cette formulaire')" type="submit" class="btn-danger">save</button>
+ 
+            </div>
+</form>
+</article>
+</div>
+
+</div>
+</div>
+
+</body>
+
+
+
+</html>

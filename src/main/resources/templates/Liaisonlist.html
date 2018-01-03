@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	<script>
+ $(document).ready(function() {
+    $('#example').DataTable( {
+        responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return '<tr>'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>';
+                    } ).join('');
+ 
+                    return $('<table/>').append( data );
+                }
+            }
+        }
+    } );
+} );
+ 
+ </script>
+<head>
+
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 250px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group1 .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 200px;
+    display: block;
+
+    
+    
+    
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container" layout:fragment="content">
+
+ 
+  
+<nav>
+ <div class="btn-group1">
+  
+  
+  <a th:href="@{/client}"><button type="button" class="btn btn-danger">Gestion des Clients</button></a>
+  <a th:href="@{/site}"><button type="button" class="btn btn-danger">Gestion des Sites</button></a>
+<a th:href="@{/service}"><button type="button" class="btn btn-danger">Gestion des Services</button></a>
+
+			
+</div>
+</nav>
+
+<article>
+
+
+
+
+
+  <div class="btn-block pull-right">
+<button type="button" class="btn btn-info btn-danger pull-right"  data-toggle="modal" data-target="#myModal">Ajouter Type Liaison</button>
+    </div>
+    
+    
+    
+    
+    
+<!-- Trigger the modal with a button  -->
+
+<div data-toggle="modal" data-target="#myModal"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                  Ajouter Liaison
+                </h4>
+            </div>
+   
+        
+       
+     <div class="modal-body">
+
+
+
+
+
+<form class="form-horizontal" th:action="@{save14}" method="post">
+               
+                   <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          for="inputnom" >Type liaison</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"
+                            id="inputnom" placeholder="type" name="type" th:txt="${liaison.type}"/>
+                    </div>
+                  </div>
+                  
+                  
+             
+                  
+                  
+                  
+                  
+                
+
+	    <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Cancel
+                </button>
+                <button type="submit" class="btn btn-danger">
+                    Save 
+                </button>
+                </div>
+		</form>
+		</div></div>
+		</div></div>
+		
+		
+		<table id="example" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Type liaison</th>
+                  <th></th>
+               <th></th>
+              
+           
+             
+            </tr>
+        </thead>
+        <tbody>
+         
+         <tr class="impair" th:each="p:${listLiaisons}">
+
+
+
+					<td th:text="${p.type}"></td>
+				
+					
+						<td> <a th:href="@{delete5(refLiaison=${p.refLiaison})}"><button type="button" class="btn btn-Basic btn-sm">delete</button></a></td>
+      <td>  <a th:href="@{edit5(refLiaison=${p.refLiaison})}"><button class="btn btn-Basic btn-sm">Edit</button></a> </td>
+         
+         
+         </tr>
+         
+         
+         
+         
+         
+        </tbody>
+        
+    </table>
+    
+  </article>
+   
+    </div>
+		</body>
+		</html>
+
+

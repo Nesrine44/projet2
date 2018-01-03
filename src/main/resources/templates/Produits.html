@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+
+<title>Ooredoo</title>
+   
+ 
+</head>
+<body>
+
+<div layout:fragment="content">		
+
+<table id="example" class="display nowrap" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nom societé</th>
+                <th>Nom client</th>
+                <th>Prenom client</th>
+                <th>Tél professionnel</th>
+                <th>Tél personnel</th>
+                <th>Agent</th>
+                <th>Adresse</th>
+                  <th>Email</th>
+              <th>Ville</th>
+              
+                
+                <th>delete</th>
+                <th>edit</th>
+            </tr>
+        </thead> <tbody> 
+         <tr class="impair" th:each="p:${listProduits}">
+					<td th:text="${p.nomsociete}"></td>
+					<td th:text="${p.nomclient}"></td>
+					<td th:text="${p.prenomclient}"></td>
+					<td th:text="${p.telprofessionnel}"></td>
+					<td th:text="${p.telpersonnel}"></td>
+					<td th:text="${p.agent}"></td>
+					<td th:text="${p.adresse}"></td>
+					<td th:text="${p.email}"></td>
+					<td th:text="${p.ville}"></td>
+					
+				
+<!-- 				     <td th:text="${produit.nomsite}"></td> -->
+				
+		<td><a
+			
+						th:href="@{delete(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">delete</button>
+							
+					</a></td>
+         <td><a
+			
+						th:href="@{edit(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">edit</button>
+							
+					</a></td>
+         
+         </tr>
+         
+         
+         
+         
+         
+        </tbody>
+    </table>
+  </div>
+
+ </body>
+	</html>

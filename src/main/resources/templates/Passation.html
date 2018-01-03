@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+	
+<head>
+<meta charset="utf-8"/>
+<title>Ooredoo</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+
+<link rel="stylesheet"  type="text/css" href="css/style.css" 
+	th:href="@{css/style.css}"/>	
+
+	
+</head>
+<body>
+
+<p></p>
+<div   layout:fragment="content">
+<form th:action="@{passation}" method="get">
+
+</form>
+
+ 
+<table id="example" class="display nowrap" cellspacing="0" width="100%">
+<thead>
+<tr>
+<th>RefPassation</th><th>Nom client</th><th>Site</th><th>Type service</th><th>commentaire</th><th>Date de passation</th><th>Date retour</th><th>Validation</th><th>Etat</th><th>Correction</th>
+</tr>
+</thead>
+<tbody>
+
+<tr th:each="p:${listPassations}">
+<td th:text="${p.refPassation}"></td>
+<td th:text="${p.prenomclient}"></td>
+<td th:text="${p.prenomsite}"></td>
+<td th:text="${p.nomtypeservice}"></td>
+<td th:text="${p.commentaire}"></td>
+
+
+<td th:text="${p.datepassation}"></td>
+<td th:text="${p.dateretour}"></td>
+<!-- <td><span th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}" ></span></td> -->
+
+<td><a th:href="@{passationencours(refPassation=${p.refPassation})}"><button type="button" class="btn btn-danger btn-xs" > Non validé</button></a>
+
+<button onclick="deleterow()" type="button" class="btn btn-danger btn-xs" > Validé</button></td> 
+
+
+
+<!-- <td><a th:href="@{nonvalidepassation(etat=${p.etat})}"><button type="button" class="btn btn-danger btn-xs" > Validation</button></a></td>  -->
+
+
+
+<td th:text="${p.etat}"></td>
+<td th:text="${p.corrige}"></td>
+
+
+
+</tr>
+
+</tbody>
+</table>
+
+</div>
+</body>
+</html>

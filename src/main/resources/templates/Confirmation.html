@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading">Confirmation</div>
+<div class="panel-body">
+
+
+<div class="form-group" >
+<label>Nom societé:</label>
+<label th:text="${produit.nomsociete}"></label>
+</div>
+<div class="form-group">
+<label>Nom client:</label>
+<label th:text="${produit.nomclient}"></label>
+</div>
+<div class="form-group">
+<label>Prenom client:</label>
+<label th:text="${produit.prenomclient}"></label>
+</div>
+<div class="form-group">
+<label>tel professionnel:</label> 
+<label th:text="${produit.telprofessionnel}"></label>
+</div>
+<div class="form-group">
+<label>tel personnel:</label>
+<label th:text="${produit.telpersonnel}"></label>
+</div>
+<div class="form-group">
+<label>fax:</label>
+<label th:text="${produit.fax}"></label>
+</div>
+<div class="form-group">
+<label>adresse:</label>
+<label th:text="${produit.adresse}"></label>
+</div>
+<div class="form-group">
+<label>Ville:</label>
+<label th:text="${produit.ville}"></label>
+</div>
+<div class="form-group">
+<label>email:</label>
+<label th:text="${produit.email}"></label>
+</div>
+<div class="form-group">
+<label>Nombre site:</label>
+<label th:text="${produit.nombresite}"></label>
+</div>
+<div class="form-group">
+<label>CGC:</label>
+<label th:text="${produit.cgc}"></label>
+</div>
+<div class="form-group">
+<label>av:</label>
+<label th:text="${produit.av}"></label>
+</div>
+
+<div class="form-group">
+<label>agent:</label>
+<label th:text="${produit.agent}"></label>
+</div>
+
+
+</div>
+</div>
+</div>
+</body>
+</html>

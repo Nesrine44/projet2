@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+<head>
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 290px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 250px;
+    display: block;
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+<div class="panel panel-default">
+
+<div class="panel-heading">Ajouter un service</div>
+<div class="panel-body ">
+
+  
+<nav>
+ <div class="btn-group">
+  
+  
+  <a th:href="@{/form}"><button type="button" class="btn btn-danger">Gestion des Clients</button></a>
+  <a th:href="@{/site}"><button type="button" class="btn btn-danger">Gestion des Sites</button></a>
+<a th:href="@{/service}"><button type="button" class="btn btn-danger">Gestion des Services</button></a>
+
+</div>
+</nav>
+<article>
+
+<form class="form-horizontal" th:action="@{save3}" method="post">
+
+
+    <div class="form-group row">
+    <label class="control-label col-sm-3" for="typeservice">Type service</label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="typeserviceOrder" name="nomtypeservice" th:object="${typeservice}" >
+        <option value="" >type service</option>
+    <option th:each="p:${listTypeservices}" th:text="${p.nomtypeservice}"></option>
+    </select>
+</div>
+  </div>
+ 
+ 
+ 
+
+ 
+ 
+ 
+  <div class="form-group row">
+    <label class="control-label col-sm-3" for="site">Code site</label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="siteOrder" name="codesite" th:object="${site}" >
+        <option value="" >code</option>
+    <option th:each="p:${listSites}" th:text="${p.codesite}"></option>
+    </select>
+</div>
+  </div>
+ 
+    <div class="form-group row">
+  <label class="control-label col-sm-3" for="datego">Date Go:</label>
+    <div class="col-sm-8">
+      <input type="date" class="form-control" id="datego" placeholder="Enter Date Go" name="dateGo" th:txt="${service.dateGo}"/>
+    </div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="estime">Date mise service: </label>
+    <div class="col-sm-8">
+      <input type="date" class="form-control" id="datemes" placeholder="Enter date message"  name="dateMES" th:txt="${service.dateMES}"/>
+    </div>         
+ </div> 
+ 
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="reception">Date reception CRM: </label>
+    <div class="col-sm-8">
+      <input type="date" class="form-control" id="daterec" placeholder="Enter date reception"  name="datereceptionCRM" th:txt="${service.datereceptionCRM}"/>
+    </div>         
+ </div>
+ 
+ 
+  <div class="form-group row">
+  <label class="control-label col-sm-3" for="telprso">Code cas : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="nbrsite" placeholder="Enter number" name="codecas" th:txt="${service.codecas}"/>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="interco">Interconnexion: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="interco" placeholder="Enter interconnexion" name="interco" th:txt="${service.interco}"/>
+    </div>         
+ </div>
+ 
+ 
+ 
+  
+
+<div class="form-group row">
+  <label class="control-label col-sm-3" for="vlanid">Vlan ID: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="vlan" placeholder="Enter vlan id" name="vlanid" th:txt="${service.vlanid}"/>
+    </div>         
+ </div>
+ 
+ <div id="champ1">
+ 
+    <div class="form-group row" >
+  <label class="control-label col-sm-3" for="debit"> Debit: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="debit" placeholder="Enter debit" name="debit" th:txt="${service.debit}"/>
+    </div>
+ 
+ </div>
+ 
+
+
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="lan">Adresse LAN : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="wan" placeholder="Enter @LAN" name="adresselan" th:txt="${service.adresselan}"/>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="wan">Adresse WAN : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="wan" placeholder="Enter @WAN" name="adressewan" th:txt="${service.adressewan}"/>
+    </div>
+ </div>   
+    </div>
+    
+    
+ 
+ 
+ 
+ <div id="champ2">
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="sda">Plage SDA : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="wan" placeholder="Enter Plage SDA" name="plagesda" th:txt="${service.plagesda}"/>
+    </div>
+ </div>
+ 
+
+   
+  <div class="form-group row">
+  <label class="control-label col-sm-3" for="sda">Nombre SDA : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="wan" placeholder="Enter Nombre SDA" name="nbresda" th:txt="${service.nbresda}"/>
+    </div>
+ </div>
+
+
+
+ 
+   <div class="form-group row">
+  <label class="control-label col-sm-3" for="datego">Num facturation:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="numfact" placeholder="Enter Num facturation"   name="numfacturation" th:txt="${service.numfacturation}"/>
+    </div>
+ </div>
+ 
+ 
+ 
+ 
+   <div class="form-group row">
+  <label class="control-label col-sm-3" for="nombrecanaux">Nombre canaux:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="ombrecanaux" placeholder="Enter Number cannaux"   name="nbrecanaux" th:txt="${service.nbrecanaux}"/>
+    </div>
+ </div>
+ 
+ 
+   <div class="form-group row">
+  <label class="control-label col-sm-3" for="loopbackvoix">Loopback voix:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="loopbackvoix" placeholder="Enter loopbackvoix"   name="loopbackvoix" th:txt="${service.loopbackvoix}"/>
+    </div>
+
+
+</div>
+ </div>
+
+
+
+
+
+
+  <div id="champ3">
+    <div class="form-group row" >
+  <label class="control-label col-sm-3" for="debit"> Debit: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="debit" placeholder="Enter debit" name="debit" th:txt="${service.debit}"/>
+    </div>
+ 
+ </div>
+ 
+
+
+ <div class="form-group row">
+  <label class="control-label col-sm-3" for="lan">Adresse LAN: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="wan" placeholder="Enter @LAN" name="adresselan" th:txt="${service.adresselan}"/>
+    </div>
+ </div>
+ </div>
+ 
+          <div class="nav navbar-nav navbar-right">
+           <button type="submit" class="btn-danger">save</button>
+ 
+            </div>
+            
+</form>
+</article>
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

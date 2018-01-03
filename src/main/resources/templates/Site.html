@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+<head>
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 290px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 250px;
+    display: block;
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+<div class="panel panel-default">
+
+<div class="panel-heading">Ajouter un site</div>
+<div class="panel-body ">
+
+
+  
+<nav>
+ <div class="btn-group">
+  
+  
+  <a th:href="@{/form}"><button type="button" class="btn btn-danger">Gestion des Clients</button></a>
+  <a th:href="@{/site}"><button type="button" class="btn btn-danger">Gestion des Sites</button></a>
+<a th:href="@{/service}"><button type="button" class="btn btn-danger">Gestion des Services</button></a>
+
+</div>
+</nav>
+   
+<article>
+
+<form class="form-horizontal" th:action="@{savesite}" method="post" >
+  
+
+ 
+   <div class="form-group row">
+    <label class="control-label col-sm-3" for="prenom">List Nom Societe: </label>
+<div class="col-sm-8">
+
+    <select class="form-control" id="produitOrder" name="nomsociete" th:object="${produit}" >
+        <option value="" >List societe</option>
+    <option    th:each="p:${listProduits}" 
+                th:text="${p.nomsociete}"></option>
+    </select>
+</div>
+  </div>
+
+<div class="form-group row" th:object="${site}"  >
+  <label class="control-label col-sm-3" for="codesociete">Code site: </label>
+    <div class="col-sm-8">
+      <input type="text"  name="codesite"  th:txt="${site.codesite}" class="form-control" id="societe" placeholder="Enter nom societe"/>
+    </div>
+ </div>
+ 
+ 
+ 
+  
+<div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="site"> Nom: <span class="glyphicon glyphicon-user"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="site" placeholder="Enter nom "  name="nomsite" th:txt="${site.nomsite}"/>
+    </div>
+ </div>
+ 
+
+
+
+ <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="prenom">Prenom: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="prenom" placeholder="Enter prenom site" name="prenomsite"  th:txt="${site.prenomsite}"/>
+    </div>
+ </div>
+
+ 
+  <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="site">Tel Professionnel :  <span class="glyphicon glyphicon-phone"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="telprof" placeholder="Enter number" name="telprofessionnelsite" th:txt="${site.telprofessionnelsite}"/>
+    </div>
+ </div>
+ 
+
+  <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="site">Tel Personnel :  <span class="glyphicon glyphicon-earphone"></span> : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="telperso" placeholder="Enter number" name="telpersonnelsite"  th:txt="${site.telpersonnelsite}"/>
+    </div>
+ </div>
+
+  
+  <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="emailsite">Email :  <span class="glyphicon glyphicon-envelope"></span> : </label>
+    <div class="col-sm-8">
+      <input type="email" class="form-control" id="emailsite" placeholder="Enter email" name="emailsite"  th:txt="${site.emailsite}"/>
+    </div>
+ </div>
+ 
+
+ 
+   <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-2" for="adressesite">Adresse site   <span class="glyphicon glyphicon-home"></span>: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="adressesite" placeholder="Enter address" name="adressesite" th:txt="${site.adressesite}"/>
+    </div>
+ </div>
+  
+ 
+ <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="telprso">Ville: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="villesite" placeholder="Enter ville" name="villesite" th:txt="${site.villesite}"/>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="telprso">Longittude : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="long" placeholder="Enter longittude" name="longittudesite" th:txt="${site.longittudesite}"/>
+    </div>
+ </div>
+
+ 
+ 
+ 
+<div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="av">Latittude : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="latittude" placeholder="Enter lattitude"  name="lattitudesite" th:txt="${site.lattitudesite}"/>
+    </div>         
+ </div>
+
+ 
+ 
+ 
+  
+ <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="av">Site vis a vis : </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="vis" placeholder="Enter site vis a vis"  name="sitevisavis" th:txt="${site.sitevisavis}"/>
+    </div>         
+ </div>
+ 
+ 
+ 
+ <div class="form-group row" th:object="${site}">
+  <label class="control-label col-sm-3" for="av">Adresse management: </label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="adressemanagement" placeholder="Enter adresse management" name="adressemanagementsite" th:txt="${site.adressemanagementsite}"/>
+    </div>         
+ </div>
+ 
+   <div class="form-group row" >
+    <label class="control-label col-sm-3" for="prenom">Type liaison </label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="liaisonOrder" name="type" th:object="${liaison}" >
+        <option value="" ></option>
+    <option th:each="p:${listLiaisons}" th:text="${p.type}"></option>
+    </select>
+</div>
+  </div>
+  
+
+  
+  <div class="form-group row">
+ <label class="control-label col-sm-3" for="equipement">Equipement : </label>
+    <div class="col-sm-2">
+  <label  class="control-label col-sm-2" >Libelle:</label>
+ 
+    <select  class="form-control col-sm-2" id="Order" name="libelle" th:object="${equipement}" >
+        <option value="" ></option>
+    <option th:each="p:${listEquipements}" th:text="${p.libelle}"></option>
+    </select>
+</div>
+
+  <div class="col-sm-2">
+  <label  class="control-label col-sm-2">Reference:</label>
+  <select  class="form-control col-sm-3" id="referenceOrder" name="referencequipement" th:object="${equipement}">
+    <option value="" ></option>
+    <option th:each="p:${listEquipements}" th:text="${p.referencequipement}"></option>  </select>
+</div>
+</div>
+
+ 
+          
+          <div class="nav navbar-nav navbar-right">
+           <button type="submit" class="btn-danger">save</button>
+ 
+            </div>
+            
+
+</form>
+</article>
+</div>
+
+</div>
+
+<!-- <script> 
+$(document).ready(function(){
+ 	$(document).ready(function(){
+	    $(".btn-primary").click(function(){
+        $(".collapse").collapse('toggle');
+    }); 	    $(".btn-warning").click(function(){
+	        $(".collapse").collapse('hide');
+	    });
+	});
+ </script>  -->
+ 
+ </div>
+ </body>
+ </html>
+ 
+

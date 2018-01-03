@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+<head>
+
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 150px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group1 .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 200px;
+    display: block;
+
+    
+    
+    
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+<div layout:fragment="content">
+
+
+ 
+  
+  <h3>Liste des Clients</h3>
+
+
+
+
+
+<div>
+  <div class="btn-block pull-right">
+
+  
+        <a th:href="@{/form}" ><button class="btn btn-danger btn-sm pull-right">Ajouter client</button></a>
+    </div>
+</div>
+
+<p></p>
+<table id="example" class="display nowrap" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nom societe</th>
+                <th>Nom client</th>
+                <th>Prenom client</th>
+                <th>Tel professionnel</th>
+                <th>Tel personnel</th>
+    
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>E-mail</th>
+                <th>Nbrsite</th>
+			     <th>CGC</th>
+			     <th>Av</th>
+			     <th></th>
+			     <th></th>
+	     	     <th></th>
+            </tr>
+        </thead>
+        <tbody>
+         
+         <tr  class="impair" th:each="p:${listProduits}"  th:attr="data-identity=${p.refProduit}" >
+
+
+                     <a onClick="#"  th:attr="data-id=${p.refProduit}" >                                     
+					<td  th:text="${p.nomsociete}"></td>
+					<td th:text="${p.nomclient}"></td>
+					<td th:text="${p.prenomclient}"></td>
+					<td th:text="${p.telprofessionnel}"></td>
+					<td th:text="${p.telpersonnel}"></td>
+					<td th:text="${p.adresse}"></td>
+					<td th:text="${p.ville}"></td>
+					<td th:text="${p.email}"></td>
+				    <td th:text="${p.nombresite}"></td>
+					<td th:text="${p.cgc}"></td>
+					<td th:text="${p.av}"></td>
+					</a> 
+					<td><a
+			
+						th:href="@{delete(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">Delete</button>
+							
+					</a></td>
+         <td><a
+			
+						th:href="@{edit(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">edit</button>
+							
+					</a></td>
+         
+              <td><a
+			
+						th:href="@{sitesuivant(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">site</button>
+							
+					</a></td>
+         </tr>
+         
+         
+         
+         
+         
+        </tbody>
+    </table>
+
+
+ <!--  je vais ajouter ici des boutons gérés par JS -->
+  
+<!--     <button id="detail">Détail</button> -->
+<!--     <button  id="sitesconsumer" type="button" class="btn btn-basic btn-xs">site</button> -->
+    
+<!--     <div class="btn-group">
+  
+
+  <button id="detail"  type="button" class="btn btn-danger btn-sm ">Detail</button>
+  
+  <button  id="sitesconsumer" type="button" class="btn btn-danger btn-sm ">Gestion des Sites</button>
+ 
+   
+
+</div> -->
+    
+    
+<!--     <div> -->
+
+  <!--  <table id="horizontal" class="display nowrap" cellspacing="0">
+  <thead>
+            <tr>
+             <th>Nom societe</th>
+                <th>Code site</th>
+                <th>Nom Responsable</th>
+                <th>Prenom</th>
+                <th>Tel professionnel</th>
+                <th>Tel personnel</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>E-mail</th>
+                <th>Longittude</th>
+			     <th>Lattitude</th>
+			     <th>@management</th>
+			       <th>Liaison</th>
+			     <th>Equipement</th>
+			     <th>Reference Equip</th>
+            </tr>
+        </thead>
+        <tbody>    <tr  class="impair" th:each="elem:${listSites}">
+
+
+                                                    
+					<td th:text="${elem.nomsociete}"></td>
+			      <td th:text="${elem.codesite}"></td>
+			       <td th:text="${elem.nomsite}"></td>
+					<td th:text="${elem.prenomsite}"></td>
+			
+					<td th:text="${elem.telprofessionnelsite}"></td>
+              <td th:text="${elem.telpersonnelsite}"></td>
+			 <td th:text="${elem.adresselsite}"></td>
+	             <td th:text="${elem.villesite}"></td>
+	              <td th:text="${elem.emailsite}"></td>
+	               <td th:text="${elem.longittudesite}"></td>
+	              <td th:text="${elem.lattitudesite}"></td>
+	                    <td th:text="${elem.adressemanagementsite}"></td> 
+	              
+	           
+         </tr>
+         
+         
+         
+         
+         
+        </tbody>
+    </table>
+					
+        
+    
+    
+    
+  
+    
+   <div id="clients">
+    
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+ -->
+</div>
+  
+  </body> 
+ 
+ 
+ 
+ 
+ 
+
+ 
+	</html>

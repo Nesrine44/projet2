@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="utf-8"/>
+<title>Passation</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet"  type="text/css" href="css/style.css" 
+	th:href="@{css/style.css}"/>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+<div class="col-md-6 col-sm-6 spacer">
+<div class="panel panel-default"  >
+<div class="panel-heading">Ajout d'une nouvelle passation</div>
+<div class="panel-body">
+<form th:action="@{save5}" method="post" >
+
+
+
+
+ <div class="form-group row">
+    <label class="control-label col-sm-2" for="prenom">Client: </label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="clientOrder" name="prenomclient" th:object="${produit}" >
+        <option value="" >List client</option>
+    <option    th:each="p:${listProduits}" 
+     th:text="${p.prenomclient}" ></option>
+    </select>
+</div>
+  </div>
+
+
+
+
+ <div class="form-group row">
+    <label class="control-label col-sm-2" for="site">Site: </label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="sitesOrder" name="prenomsite" th:object="${site}" >
+        <option value="" >List site</option>
+    <option    th:each="p:${listSites}" 
+     th:text="${p.prenomsite}" ></option>
+    </select>
+</div>
+  </div>
+  
+  
+  
+ <div class="form-group row">
+    <label class="control-label col-sm-2" for="prenom">Type service: </label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="produitOrder" name="nomtypeservice"  multiple="multiple"  th:object="${typeservice}" >
+        <option value="" >Type service</option>
+    <option    th:each="p:${listTypeservices}" 
+     th:text="${p.nomtypeservice}" ></option>
+    </select>
+</div>
+  </div>
+   
+ 
+ <div class="form-group row">
+    <label class="control-label col-sm-2" for="typeservice">Etat</label>
+<div class="col-sm-8" >
+
+    <select class="form-control" id="etatOrder" name="etat" th:object="${etat}" >
+        <option value="" >etat</option>
+    <option th:each="p:${listEtats}" th:text="${p.etat}"></option>
+    </select>
+</div>
+  </div>
+  
+    <div class="form-group row">
+  <label class="control-label col-sm-2" >Date Passation:</label>
+    <div class="col-sm-8" th:object="${passation}" >
+      <input type="date" class="form-control" id="datepassation" placeholder="Enter Date passation" name="datepassation" th:txt="${passation.datepassation}"/>
+    </div>
+ </div>
+ 
+
+
+
+ 
+  
+
+
+
+ 
+
+
+<!--  <div class="form-group row"> -->
+<!--     <label class="control-label col-sm-1" for="site">Etat: </label> -->
+<!-- <div class="col-sm-8" > -->
+
+<!--     <select class="form-control" id="sitesOrder" name="encours" th:object="${etat}" > -->
+<!--         <option value="" >Etat</option> -->
+<!--     <option    th:each="p:${listEtats}"  -->
+<!--      th:text="${p.encours}" ></option> -->
+<!--     </select> -->
+<!-- </div> -->
+<!--   </div> -->
+
+
+
+
+ <p></p>
+ 
+ <button type="submit" class="btn-danger">save</button>
+
+</form>
+</div>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

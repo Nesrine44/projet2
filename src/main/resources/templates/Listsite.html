@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+	
+<head>
+
+<style>
+div.container {
+   width: 100%; 
+  
+}
+
+
+nav {
+     float:left;
+    max-width: 130px;
+    margin: 0;
+    padding: 1em;
+}
+
+
+nav a {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav a btn-danger{
+    text-decoration: none;
+}
+
+article {
+    margin-left: 150px;
+    border-left: 1.5px solid gray;
+    padding: 1em;
+    overflow: hidden; 
+}
+.btn-group1 .btn-danger{
+    background-color: #D01C22; /* Red */
+    border: 1px solid white;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 200px;
+    display: block;
+
+    
+    
+    
+}
+
+.btn-group .btn-danger:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+    background-color: #fff;
+     color:#D01C22;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+<div layout:fragment="content">
+
+
+ 
+
+
+
+ <h3>Liste des Sites</h3>
+
+
+<div>
+  <div class="btn-block pull-right">
+  
+        <a th:href="@{/site}" ><button class="btn btn-danger btn-sm pull-right">Ajouter site</button></a>
+    </div>
+</div>
+
+<p></p>
+<table id="horizontal" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom societe</th>
+                <th>Code site</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Tel profesionnel</th>
+                  <th>Tel personnel</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>E-mail</th>
+                <th>Longittude</th>
+			     <th>Lattitude</th>
+			          <th>Sitevisavis</th>
+			     <th>Adresse management</th>
+			 <th>Type liaison</th>
+			  <th>libelle</th>
+			   <th>Reference</th>
+			   
+			       
+            </tr>
+        </thead>
+        <tbody>
+         
+         <tr class="impair" th:each="p:${listSites}" >
+
+
+
+					<td  th:text="${p.nomsociete}"></td>
+					<td th:text="${p.codesite}"></td>
+					<td th:text="${p.nomsite}"></td>
+					<td th:text="${p.prenomsite}"></td>
+					<td th:text="${p.telpersonnelsite}"></td>
+					<td th:text="${p.telprofessionnelsite}"></td>
+					<td th:text="${p.adressesite}"></td>
+					<td th:text="${p.villesite}"></td>
+					<td th:text="${p.emailsite}"></td>
+					<td th:text="${p.longittudesite}"></td>
+				    <td th:text="${p.lattitudesite}"></td>
+				    <td th:text="${p.sitevisavis}"></td>
+					<td th:text="${p.adressemanagementsite}"></td>
+					 <td th:text="${p.type}"></td>
+					   <td th:text="${p.referencequipement}"></td>
+					  <td th:text="${p.libelle}"></td>
+					 
+		
+				
+         <!-- 
+              <td><a
+			
+						th:href="@{sitesuivant(refsite=${p.refsite})}">
+							<button type="button" class="btn btn-basic btn-xs">site</button>
+							
+					</a></td> -->
+         </tr>
+         
+         
+         
+         
+         
+        </tbody>
+    </table>
+
+
+    </div>
+
+    
+ </body>
+ 
+ 
+ 
+ 
+ 
+
+ 
+	</html>

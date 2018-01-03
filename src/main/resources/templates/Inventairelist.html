@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+
+<title>Ooredoo</title>
+   
+ 
+</head>
+<body>
+
+<div layout:fragment="content">		
+
+<!-- <table id="inventaire" class="display nowrap" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nom societé</th>
+                <th>Nom site</th>
+                <th>Code site</th>
+                <th>Equipement</th>
+                <th>Liaison</th>
+                <th>Loopback</th>
+                <th>sitevisavis </th>
+                  <th>type service</th>
+                  
+          
+            </tr>
+        </thead> <tbody>  -->
+        <table id="example" class="display nowrap" cellspacing="0" width="100%" >
+     
+          
+            
+            <thead>
+            <TR><TH>Nom societe</TH><TH>Nom site</TH><TH>Code site</TH><TH>equipement</TH><TH>Liaison</TH><TH>Loopback</TH><TH>sitevisavis</TH><TH>type service</TH></TR>
+            </thead>
+      
+         <tbody th:each="site,iterStat : ${listSites}">
+         <tr th:each="service,iterStat : ${listServices}">
+          
+             <td  th:text="${site.nomsociete}"></td> 
+                   <td th:text="${site.nomsite}"></td>
+             <td th:text="${site.codesite}"></td>
+              <td th:text="${site.libelle}"></td>
+              <td th:text="${site.referencequipement}"></td>
+               <td th:text="${site.type}"></td>
+               
+                <td th:text="${site.sitevisavis}"></td>
+<!--                  <td th:text="${service.loopbackvoix}"></td> -->
+              <td th:text="${service.nomtypeservice}"></td>
+  
+                               
+      
+
+   </tr>
+         
+            
+        
+          
+
+    </tbody></table>
+       <!--   <tr class="impair" th:each="p:${listSites}" th:object="${site}"  >
+					<td th:text="${p.nomsociete}" ></td>
+					<td th:text="${p.nomsite}"></td>
+					<td th:text="${p.codesite}" ></td>
+			       <td th:text="${p.codesite}"></td>
+					<td th:text="${p.codesite}"></td>
+					<td th:text="${p.sitevisavis}"></td>
+					<td th:text="${p.codesite}"></td>
+				
+						<td th:text="${p.codesite}"></td>
+				
+				
+		<td><a
+			
+						th:href="@{delete(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">delete</button>
+							
+					</a></td>
+         <td><a
+			
+						th:href="@{edit(refProduit=${p.refProduit})}">
+							<button type="button" class="btn btn-basic btn-xs">edit</button>
+							
+					</a></td> 
+         
+         </tr>
+         
+          -->
+         
+         
+         
+<!--         </tbody> -->
+<!--     </table> -->
+  </div>
+
+ </body>
+	</html>

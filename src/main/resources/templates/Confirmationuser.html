@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading">Confirmation</div>
+<div class="panel-body">
+
+
+<div class="form-group">
+<label>Nom user:</label>
+<label th:text="${user.nomuser}"></label>
+</div>
+<div class="form-group">
+<label>Prenom User:</label>
+<label th:text="${user.prenomuser}"></label>
+</div>
+<div class="form-group">
+<label>Prenom client:</label>
+<label th:text="${user.emailuser}"></label>
+</div>
+<div class="form-group">
+<label>Login:</label>
+<label th:text="${user.login}"></label>
+</div>
+<div class="form-group">
+<label>Password:</label>
+<label th:text="${user.password}"></label>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</body>
+</html>

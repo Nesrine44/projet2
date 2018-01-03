@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Confirmation Site</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading">Confirmation  site</div>
+<div class="panel-body">
+
+
+
+
+
+
+<div class="form-group">
+<label>nom societe:</label>
+       
+    <label  th:text="${site.nomsociete}"></label>
+ </div>
+ 
+<div class="form-group">
+<label>codesite:</label>
+<label th:text="${site.codesite}"></label>
+</div>
+
+
+<div class="form-group">
+<label>Nomsite:</label>
+<label th:text="${site.nomsite}"></label>
+</div>
+<div class="form-group">
+<label>prenomsite:</label>
+<label th:text="${site.prenomsite}"></label>
+</div>
+<div class="form-group">
+<label>telprofessionnelsite:</label>
+<label th:text="${site.telprofessionnelsite}"></label>
+</div>
+<div class="form-group">
+<label>telpersonnelsite:</label>
+<label th:text="${site.telpersonnelsite}"></label>
+</div>
+
+<div class="form-group">
+<label>adresse site:</label>
+<label th:text="${site.adressesite}"></label>
+</div>
+<div class="form-group">
+<label>Ville site:</label>
+<label th:text="${site.villesite}"></label>
+</div>
+<div class="form-group">
+<label>emailsite:</label>
+<label th:text="${site.emailsite}"></label>
+</div>
+<div class="form-group">
+<label>site vis a site:</label>
+<label th:text="${site.sitevisavis}"></label>
+</div>
+<div class="form-group">
+<label>longittude:</label>
+<label th:text="${site.longittudesite}"></label>
+</div>
+<div class="form-group">
+<label>latittude:</label>
+<label th:text="${site.lattitudesite}"></label>
+</div>
+<div class="form-group">
+<label>adresse management site:</label>
+<label th:text="${site.adressemanagementsite}"></label>
+</div>
+
+<!-- <div class="form-group"> -->
+<!-- <label>Liaison:</label> -->
+       
+<!--     <label  th:txt="p:${listPros}" th:text="${p.nomsociete}"></label> -->
+ 
+<!-- </div> -->
+<!-- </div> -->
+
+
+
+
+<div class="form-group">
+<label>Type liaison:</label>
+<label th:text="${site.type}"></label>
+</div>
+
+<div class="form-group">
+<label>marque:</label>
+<label th:text="${site.libelle}"></label>
+</div>
+
+
+<div class="form-group">
+<label>reference:</label>
+<label th:text="${site.referencequipement}"></label>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

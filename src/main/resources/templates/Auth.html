@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
+   
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+
+<link rel="stylesheet"  type="text/css" href="../css/bootstrap.min.css" 
+	th:href="@{css/bootstrap.min.css}"/>
+<link rel="stylesheet"  type="text/css" href="css/style.css" 
+	th:href="@{css/style.css}"/>
+	<link rel="icon" href="data:,"/> 
+
+ 
+</head>
+
+<body>
+
+<div class="col-md-6 col-sm-6 spacer">
+
+
+<img class="image" th:src="@{/images/logo9.jpg}"/>
+<div class="panel panel-default">
+<div class="panel-heading" >Authentification</div>
+<div class="panel-body">
+
+<form th:action="@{/auth}" method="post">
+<div class="form-group">
+<label class="control-label">Username:</label>
+<input class="form-control" type="text" name="username" />
+</div>
+<div class="form-group">
+<label class="control-label">Password:</label>
+<input class="form-control" type="password" name="password"/>
+</div>
+
+<div>
+<input type="submit" class="btn btn-danger" value="Sign in"/>
+
+</div>
+</form>
+
+</div>
+
+
+</div>
+
+<span class="user" th:if="${param.error}">
+  Incorrect Username or password</span>
+<span class="user" th:if="${param.logout}">
+You have been logged out
+</span>
+</div>
+<div>
+
+
+	<footer class="navbar-fixed-bottom">
+	
+	
+	<div class="nav navbar-nav navbar-right">				
+							
+	
+							
+							
+	<small>
+copyright@2017 ooredoo Business
+	 </small>
+	 </div>
+	
+	 </footer>
+	 </div>
+</body>
+
+</html>

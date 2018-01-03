@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+
+<style>
+div.container {
+	width: 100%;
+}
+
+nav {
+	float: left;
+	max-width: 130px;
+	margin: 0;
+	padding: 1em;
+}
+
+nav a {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav a btn-danger {
+	text-decoration: none;
+}
+
+article {
+	margin-left: 150px;
+	border-left: 1.5px solid gray;
+	padding: 1em;
+	overflow: hidden;
+}
+
+.btn-group1 .btn-danger {
+	background-color: #D01C22; /* Red */
+	border: 1px solid white;
+	color: white;
+	padding: 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+	width: 200px;
+	display: block;
+}
+
+.btn-group .btn-danger:not (:last-child ) {
+	border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .btn-danger:hover {
+	background-color: #fff;
+	color: #D01C22;
+}
+</style>
+</head>
+
+
+<body>
+
+	<div layout:fragment="content">
+
+
+
+
+
+		<div class="btn-group">
+
+
+			<a th:href="@{/client}"><button type="button"
+					class="btn btn-danger btn-sm ">Gestion des Clients</button></a> <a
+				th:href="@{/site}"><button type="button"
+					class="btn btn-danger btn-sm ">Gestion des Sites</button></a> <a
+				th:href="@{/service}"><button type="button"
+					class="btn btn-danger btn-sm">Gestion des Services</button></a>
+
+		</div>
+		<h3>Liste des services</h3>
+
+
+
+
+
+		<div>
+			<div class="btn-block pull-right">
+
+				<a th:href="@{/service}"><button
+						class="btn btn-danger btn-sm pull-right">Ajouter Service</button></a>
+			</div>
+		</div>
+
+		<p></p>
+		<table id="example" class="display nowrap" cellspacing="0"
+			width="100%">
+			<thead>
+				<tr>
+					<th>Type service</th>
+					<th>Code site</th>
+					<th>Date Go</th>
+						<th>Date mise service</th>
+	
+					<th>Date reception CRM</th>
+					<th>Code cas</th>
+					<th>Interconnexion</th>
+					<th>Vlan ID</th>
+					<th>Debit</th>
+					<th>Adresse LAN</th>
+					<th>Adresse WAN</th>
+					<th>Plage SDA</th>
+					<th>Nombre SDA</th>
+					<th>Num facturation</th>
+					<th>Nombre Cannaux</th>
+					<th>Loopback Voix</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr class="impair" th:each="p:${listServices}">
+
+
+
+					<td th:text="${p.nomtypeservice}"></td>
+					<td th:text="${p.codesite}"></td>
+					<td th:text="${p.dateGo}"></td>
+					<td th:text="${p.dateMES}"></td>
+
+					<td th:text="${p.datereceptionCRM}"></td>
+					<td th:text="${p.codecas}"></td>
+					<td th:text="${p.interco}"></td>
+					<td th:text="${p.vlanid}"></td>
+					<td th:text="${p.debit}"></td>
+					<td th:text="${p.adresselan}"></td>
+					<td th:text="${p.adressewan}"></td>
+					<td th:text="${p.plagesda}"></td>
+					<td th:text="${p.nbresda}"></td>
+					<td th:text="${p.numfacturation}"></td>
+					<td th:text="${p.nbrecanaux}"></td>
+					<td th:text="${p.loopbackvoix}"></td>
+					
+
+
+
+
+				
+				</tr>
+
+
+
+
+
+			</tbody>
+		</table>
+
+
+	</div>
+
+
+</body>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Confirmation Liaison</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading">Confirmation service</div>
+<div class="panel-body">
+
+<div class="form-group">
+<label>Num TT:</label>
+<label th:text="${backup.numtt}"></label>
+</div>
+
+
+
+
+<div class="form-group">
+<label>Num 3G4G:</label>
+<label th:text="${backup.numtroisgquatreg}"></label>
+</div>
+
+
+</div>
+
+</div>
+</div>
+</body>
+</html>
